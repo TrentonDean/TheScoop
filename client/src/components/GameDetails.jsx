@@ -16,7 +16,7 @@ const GameDetails = () => {
     const navigate = useNavigate()
 
     const getGame = () => {
-        axios.get(`http://localhost:8000/game/${id}`)
+        axios.get(`http://localhost:8000/api/game/${id}`)
         .then((res)=>{
             setGame(res.data)
         }).catch((err)=>{
@@ -25,7 +25,7 @@ const GameDetails = () => {
     }
 
     const deleteGame = (id) => {
-        axios.delete(`http://localhost:8000/delete/${id}`)
+        axios.delete(`http://localhost:8000/api/delete/${id}`)
             .then(res => {navigate("/home")})
             .catch(err => console.log(err))
     }
@@ -33,7 +33,7 @@ const GameDetails = () => {
     const logoutHandler = (e) => {
         e.preventDefault()
 
-        axios.get('http://localhost:8000/logout')
+        axios.get('http://localhost:8000/api/logout')
             .then((res) => {
                 navigate("/login")
             }).catch((err) => {
@@ -42,7 +42,7 @@ const GameDetails = () => {
     }
 
     const likeGame = (id) => {
-        axios.put(`http://localhost:8000/like/${id}`)
+        axios.put(`http://localhost:8000/api/like/${id}`)
             .then((res) => {
                 console.log({res})
                 getGame();

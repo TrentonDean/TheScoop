@@ -29,7 +29,7 @@ const GameForm = () => {
 
         e.preventDefault()
 
-        axios.post('http://localhost:8000/newgame', {gameName, rating, description, otherNotes, uploadedBy}, {withCredentials:true})
+        axios.post('http://localhost:8000/api/newgame', {gameName, rating, description, otherNotes, uploadedBy}, {withCredentials:true})
         .then(res=>{
             console.log(res);                         
             setGameName('')
@@ -68,7 +68,7 @@ const GameForm = () => {
     const logoutHandler = (e) => {
         e.preventDefault()
 
-        axios.get('http://localhost:8000/logout')
+        axios.get('http://localhost:8000/api/logout')
             .then((res) => {
                 navigate("/login")
             }).catch((err) => {

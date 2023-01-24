@@ -16,7 +16,7 @@ const YourGames = () => {
     const navigate = useNavigate()
 
     const getMyGames = () => {                                                 // grabs games uploaded by the logged in user
-        axios.get(`http://localhost:8000/yourgames/${fullName}`)
+        axios.get(`http://localhost:8000/api/yourgames/${fullName}`)
         .then((res)=>{
             setGames(res.data)
         }).catch((err)=>{
@@ -27,7 +27,7 @@ const YourGames = () => {
     const logoutHandler = (e) => {
         e.preventDefault()
 
-        axios.get('http://localhost:8000/logout')
+        axios.get('http://localhost:8000/api/logout')
             .then((res) => {
                 navigate("/login")
             }).catch((err) => {
@@ -36,7 +36,7 @@ const YourGames = () => {
     }
 
     const likeGame = (id) => {
-        axios.put(`http://localhost:8000/like/${id}`)
+        axios.put(`http://localhost:8000/api/like/${id}`)
             .then((res) => {
                 console.log({res})
                 getMyGames();

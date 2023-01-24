@@ -15,7 +15,7 @@ const Home = () => {
     const navigate = useNavigate()
 
     const getAllGames = () => {                                 // grabs all Games
-        axios.get("http://localhost:8000/allgames")
+        axios.get("http://localhost:8000/api/allgames")
         .then((res)=>{
             setAllGames(res.data);
 	})
@@ -27,7 +27,7 @@ const Home = () => {
     const logoutHandler = (e) => {
         e.preventDefault()
 
-        axios.get('http://localhost:8000/logout')
+        axios.get('http://localhost:8000/api/logout')
             .then((res) => {
                 navigate("/login")
             }).catch((err) => {
@@ -36,7 +36,7 @@ const Home = () => {
     }
 
     const likeGame = (id) => {
-        axios.put(`http://localhost:8000/like/${id}`)
+        axios.put(`http://localhost:8000/api/like/${id}`)
             .then((res) => {
                 console.log({res})
                 getAllGames();

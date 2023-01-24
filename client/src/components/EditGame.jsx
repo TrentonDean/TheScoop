@@ -27,7 +27,7 @@ const EditGame = () => {
     const [errors, setErrors] = useState({})
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/game/${id}`)
+        axios.get(`http://localhost:8000/api/game/${id}`)
             .then( res => {
                 setGameName(res.data.gameName);
                 setRating(res.data.rating)
@@ -41,7 +41,7 @@ const EditGame = () => {
 
         e.preventDefault()
 
-        axios.put(`http://localhost:8000/game/${id}/edit`, {gameName:gameName, rating:rating, description:description, otherNotes:otherNotes})
+        axios.put(`http://localhost:8000/api/game/${id}/edit`, {gameName:gameName, rating:rating, description:description, otherNotes:otherNotes})
         .then(res => {
             console.log(res)
             navigate(`/game/${id}`)
@@ -55,7 +55,7 @@ const EditGame = () => {
     const logoutHandler = (e) => {
         e.preventDefault()
 
-        axios.get('http://localhost:8000/logout')
+        axios.get('http://localhost:8000/api/logout')
             .then((res) => {
                 navigate("/login")
             }).catch((err) => {

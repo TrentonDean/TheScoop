@@ -27,7 +27,7 @@ const Register = () => {
 
         e.preventDefault()
 
-        axios.post(`http://localhost:8000/register`, {firstName, lastName, email, password},{withCredentials:true} )
+        axios.post(`http://localhost:8000/api/register`, {firstName, lastName, email, password},{withCredentials:true} )
             .then(res=>{
                 console.log(res);                         
                 setFirstName("")

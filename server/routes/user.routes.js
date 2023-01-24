@@ -1,7 +1,7 @@
 const userController = require('../controllers/user.controller');
 
 module.exports = (app) => {
-    app.post('/register', userController.registerUser);
-    app.post('/login', userController.loginUser);
-    app.get('/logout', userController.logOutUser);
+    app.post('/api/register', userController.registerUser);
+    app.post('/api/login', userController.loginUser);
+    app.get('/api/logout', userController.logOutUser);
 }

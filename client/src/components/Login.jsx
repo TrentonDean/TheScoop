@@ -13,7 +13,7 @@ const Login = () => {
     const onLoginHandler = (e) => {
         e.preventDefault()
 
-        axios.post('http://localhost:8000/login', {email, password},{withCredentials:true, credentials:"include"})
+        axios.post('http://localhost:8000/api/login', {email, password},{withCredentials:true, credentials:"include"})
             .then((res) => {
                 navigate("/home")
             }).catch((err) => {
