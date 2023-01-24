@@ -11,7 +11,7 @@ module.exports = {
 
             const userToken = jwt.sign({_id:newUser._id,email:newUser.email},SECRET)    // creates JWT
 
-            res.status(201).cookie('userToken',userToken,{httpOnly:true,expires:new Date(Date.now() + 90000)}).json({successMessage:"User logged in",user:newUser})     // creates a cookie of JWT, sets it to httpOnly, gives a time limit on how long it lasts in the browser, and sends a success message
+            res.status(201).cookie('firstName',newUser.firstName).cookie('lastName',newUser.lastName).json({successMessage:"User logged in",user:newUser})     // creates a cookie of first name and last name
         }catch(error){
             res.status(400).json(error)
         }
@@ -30,7 +30,7 @@ module.exports = {
                 res.status(400).json({error:"invalid email/password"})
             }else{
                 const userToken = jwt.sign({_id:user._id,email:user.email},SECRET)
-                res.status(201).cookie('userToken',userToken,{httpOnly:true,expires:new Date(Date.now() + 90000)}).json({successMessage:"User logged in",user:user})    
+                res.status(201).cookie('firstName',user.firstName).cookie('lastName',user.lastName).json({successMessage:"User logged in",user:user})
             }
         }catch(error){
             res.status(400).json({error:"invalid email/password"})
@@ -38,7 +38,8 @@ module.exports = {
     },
 
     logOutUser:(req,res) => {       //logs user out
-        res.clearCookie('userToken')
+        res.clearCookie('firstName')
+        res.clearCookie('lastName')
         res.json({success:"User logged out"})
-    }
+    },
 }
