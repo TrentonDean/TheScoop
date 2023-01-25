@@ -17,13 +17,13 @@ const GameForm = () => {
     const [otherNotes, setOtherNotes] = useState('')
 
     const navigate = useNavigate()
-    const [errors, setErrors] = useState({})
 
     const [firstName, setFName] = useState(cookies.get("firstName"))
     const [lastName, setLName] = useState(cookies.get("lastName"))
     const [fullName, setFullName] = useState(firstName + ' ' + lastName)
 
     const [uploadedBy, setUploadedBy] = useState(fullName)
+    const [errors, setErrors] = useState({})
 
     const onGameSubmitHandler = (e) => {
 
@@ -70,7 +70,7 @@ const GameForm = () => {
 
         axios.get('http://localhost:8000/api/logout')
             .then((res) => {
-                navigate("/login")
+                navigate("/")
             }).catch((err) => {
                 console.log(err)
             })

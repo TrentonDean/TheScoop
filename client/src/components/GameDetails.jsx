@@ -35,7 +35,7 @@ const GameDetails = () => {
 
         axios.get('http://localhost:8000/api/logout')
             .then((res) => {
-                navigate("/login")
+                navigate("/")
             }).catch((err) => {
                 console.log(err)
             })

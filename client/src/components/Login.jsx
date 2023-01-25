@@ -7,6 +7,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [errors, setErrors] = useState("")
 
     const navigate = useNavigate("")
 
@@ -17,7 +18,7 @@ const Login = () => {
             .then((res) => {
                 navigate("/home")
             }).catch((err) => {
-                console.log(err)
+                setErrors("Invalid Login")
             })
     }
 
@@ -29,6 +30,7 @@ const Login = () => {
                     <div className="col-6">
                         <form onSubmit={onLoginHandler}>
                             <h3 className="mb-4 divider line razor">Login</h3>
+                            {errors ? <p className="red-text">{errors}</p> : null }
                             <div className="mb-3">
                                 <input className="form-control text-center" placeholder="Email" name="email" value={email} onChange = {(e) => {setEmail(e.target.value)}}/>
                             </div>

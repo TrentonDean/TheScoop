@@ -33,7 +33,7 @@ module.exports = {
                 res.status(201).cookie('firstName',user.firstName).cookie('lastName',user.lastName).json({successMessage:"User logged in",user:user})
             }
         }catch(error){
-            res.status(400).json({error:"invalid email/password"})
+            res.status(400).json(error)
         }
     },
 

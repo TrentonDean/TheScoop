@@ -129,7 +129,7 @@ const Register = () => {
                                 {cPasswordError ? <p className="red-text">{cPasswordError}</p> : null }
                             </div>
                             <div>
-                                <Link to={`/login`} className="logreg-link">Already registered?</Link>
+                                <Link to={`/`} className="logreg-link">Already registered?</Link>
                             </div>
                             {errors.firstName ? <p className="red-text">{errors.firstName.message}</p> : null}
                             {errors.lastName ? <p className="red-text">{errors.lastName.message}</p> : null }
